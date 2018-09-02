@@ -1,4 +1,5 @@
- # About ![Urbackup](https://portainer.io/images/logos/urbackup.png) Urbackup server based on Alpine Linux container
+ # About 
+![Urbackup](https://portainer.io/images/logos/urbackup.png)  Urbackup server based on Alpine Linux container
 
 # Volumes
  ``` 
@@ -8,11 +9,10 @@
 ```
  # Ports 
 ``` 
-Port        Usage                                                       Incomingg Protocol
-55413   FastCGI for web interface.          Incoming TCP
-55414   HTTP web interface.                        Incoming TCP
-55415   Internet clients.                                  Incoming TCP
-35623   UDP broadcasts for discovery  Outgoing UDP
+55413 (TCP In): FastCGI for web interface.
+55414 (TCP In): HTTP web interface.
+55415 (TCP In): Internet clients.
+35623 (UDP Out): UDP broadcasts for discovery.
 ``` 
 # Usage 
 ``` 
