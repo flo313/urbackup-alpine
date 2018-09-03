@@ -5,7 +5,8 @@ ENV URL https://hndl.urbackup.org/Server/${VERSION}/urbackup-server-${VERSION}.t
 
 ADD ${URL} /tmp/urbackup-server-${VERSION}.tar.gz 
 
-RUN apk add --no-cache btrfs-progs && \
+RUN apk add --no-cache btrfs-progs \
+        tar && \
     apk add --no-cache --virtual=build-dependencies \
 	bsd-compat-headers \
 	cmake \
@@ -24,8 +25,8 @@ RUN apk add --no-cache btrfs-progs && \
 	opus-dev \
 	tar \
         uriparser-dev &&\
-   tar -xfv /tmp/urbackup-server-${VERSION}.tar.gz &&\
-   cd /tmp &&\
+   tar -xfv /tmp/urbackup-server-${VERSION}.tar.gz -C /tmp &&\
+   cd /tmp/urbackup-server-${VERSION} &&\
    ./configure &&\
    ./make &&\
    ./make-install &&\
