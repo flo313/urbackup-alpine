@@ -1,5 +1,6 @@
  # About 
-![Urbackup](https://portainer.io/images/logos/urbackup.png)  Urbackup server based on Alpine Linux container
+![Urbackup](https://portainer.io/images/logos/urbackup.png)
+Urbackup server based on Alpine Linux container
 
 # Volumes
  ``` 
@@ -16,5 +17,5 @@
 ``` 
 # Usage 
 ``` 
-docker run -d --name urbackup -v /var/urbackup:/var/urbackup -p 55413-55415:55413-55415 -p 35623:35623 flo313/urbackup-alpine 
+docker run -d --name urbackup -v /var/urbackup:/var/urbackup -p 55413-55415:55413-55415 -p 35623:35623 flo313/urbackup-server
 ``` 
