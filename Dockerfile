@@ -1,36 +1,18 @@
-FROM alpine:edge
+FROM ubuntu:latest
 
 ENV VERSION 2.2.11
 ENV URL https://hndl.urbackup.org/Server/${VERSION}/urbackup-server-${VERSION}.tar.gz
 
 ADD ${URL} /tmp/urbackup-server-${VERSION}.tar.gz 
 
-RUN apk add --no-cache btrfs-progs \
-        tar && \
-    apk add --no-cache --virtual=build-dependencies \
-	bsd-compat-headers \
-	cmake \
-	curl \
-	curl-dev \
-	findutils \
-	ffmpeg-dev \
-	gettext-dev \
-	gcc \
-	git \
-	g++ \
-	libressl-dev \
-	libvpx-dev \
-	linux-headers \
-	make \
-	opus-dev \
-	tar \
-        uriparser-dev &&\
-   tar -xfv /tmp/urbackup-server-${VERSION}.tar.gz -C /tmp &&\
+RUN apt-get update &&\
+    apt-get install -y build-essential zlib1g-dev libcurl4-gnutls-dev libcrypto++-dev
+   tar -xf /tmp/urbackup-server-${VERSION}.tar.gz -C /tmp &&\
    cd /tmp/urbackup-server-${VERSION} &&\
    ./configure &&\
-   ./make &&\
-   ./make-install &&\
-   apk del --purge build-dependencies && \
+   make &&\
+   make install &&\
+   apt-get remove build-essential && apt-get autoremove && \
    rm -rf /var/cache/apk/* /tmp/*
 
 EXPOSE 55413
@@ -39,5 +21,5 @@ EXPOSE 55415
 EXPOSE 35623
 
 VOLUME [ "/var/urbackup", "/var/log", "/usr/share/urbackup" ]
-ENTRYPOINT ["/usr/bin/urbackupsrv"]
+ENTRYPOINT ["urbackupsrv"]
 CMD ["run"]
