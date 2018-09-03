@@ -26,9 +26,9 @@ RUN apk add --no-cache btrfs-progs && \
         uriparser-dev &&\
    tar -xfv /tmp/urbackup-server-${VERSION}.tar.gz &&\
    cd /tmp &&\
-   ./configure &&
-   ./make &&
-   ./make-install &&
+   ./configure &&\
+   ./make &&\
+   ./make-install &&\
    apk del --purge build-dependencies && \
    rm -rf /var/cache/apk/* /tmp/*
 
