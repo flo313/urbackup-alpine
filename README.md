@@ -1,6 +1,6 @@
  # About 
 ![Urbackup](https://portainer.io/images/logos/urbackup.png)
-Urbackup server based on Alpine Linux container
+Urbackup server based on ubuntu image
 
 # Volumes
  ``` 
