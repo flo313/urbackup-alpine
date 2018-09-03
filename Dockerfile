@@ -6,14 +6,14 @@ ENV URL https://hndl.urbackup.org/Server/${VERSION}/urbackup-server-${VERSION}.t
 ADD ${URL} /tmp/urbackup-server-${VERSION}.tar.gz 
 
 RUN apt-get update &&\
-    apt-get install -y build-essential zlib1g-dev libcurl4-gnutls-dev libcrypto++-dev
-   tar -xf /tmp/urbackup-server-${VERSION}.tar.gz -C /tmp &&\
-   cd /tmp/urbackup-server-${VERSION} &&\
-   ./configure &&\
-   make &&\
-   make install &&\
-   apt-get remove build-essential && apt-get autoremove && \
-   rm -rf /var/cache/apk/* /tmp/*
+    apt-get install -y build-essential zlib1g-dev libcurl4-gnutls-dev libcrypto++-dev &&\
+    tar -xf /tmp/urbackup-server-${VERSION}.tar.gz -C /tmp &&\
+    cd /tmp/urbackup-server-${VERSION} &&\
+    ./configure &&\
+    make &&\
+    make install &&\
+    apt-get remove build-essential && apt-get autoremove && \
+    rm -rf /var/lib/apt/lists/* /tmp/*
 
 EXPOSE 55413
 EXPOSE 55414
